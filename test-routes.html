@@ -1,15 +1,7 @@
 <!doctype html><html lang="es"><head><meta charset="utf-8"><script>
 window.__errors=[]; window.addEventListener('error',e=>window.__errors.push(e.error?.stack||e.message)); window.addEventListener('unhandledrejection',e=>window.__errors.push(String(e.reason?.stack||e.reason)));
 </script></head><body><div id="app"></div><div id="toast-root"></div>
-<script src="js/data/initial-data.js?v=test"></script>
-<script src="js/core/storage.js?v=test"></script>
-<script src="js/core/auth.js?v=test"></script>
-<script src="js/modules/dashboard.js?v=test"></script>
-<script src="js/modules/inventory.js?v=test"></script>
-<script src="js/modules/melamine.js?v=test"></script>
-<script src="js/modules/movements.js?v=test"></script>
-<script src="js/modules/audit.js?v=test"></script>
-<script src="js/app.js?v=test"></script>
+<script type="module" src="/js/main.js"></script>
 <script>
 setTimeout(()=>{
   const form=document.getElementById('login-form');

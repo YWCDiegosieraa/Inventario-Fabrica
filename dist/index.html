@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1e293b">
+  <meta name="description" content="CarpinStock Pro - Sistema de inventario para fábrica de carpintería">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+  <title>CarpinStock Pro | Inventario</title>
+  <script type="module" crossorigin src="/assets/index-BDBKGSDB.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DS-tRjYE.css">
+</head>
+<body>
+  <div id="app"></div>
+  <div id="toast-root" class="toast-root" aria-live="polite"></div>
+
+  <!-- Desarrollo local: elimina registros de Service Worker/cache de versiones anteriores. -->
+  <script>
+    (async function cleanupLegacyWorker() {
+      try {
+        if ('serviceWorker' in navigator) {
+          const registrations = await navigator.serviceWorker.getRegistrations();
+          await Promise.all(registrations.map(reg => reg.unregister()));
+        }
+        if ('caches' in window) {
+          const keys = await caches.keys();
+          await Promise.all(keys.filter(key => key.startsWith('carpinstock-')).map(key => caches.delete(key)));
+        }
+      } catch (error) {
+        console.warn('No fue posible limpiar la caché anterior:', error);
+      }
+    })();
+  </script>
+
+</body>
+</html>
