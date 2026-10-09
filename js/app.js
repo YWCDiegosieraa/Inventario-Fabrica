@@ -92,9 +92,46 @@
             </label>
             <button class="btn btn-primary btn-block" type="submit">Ingresar al sistema</button>
           </form>
+          <div style="text-align: center; margin-top: 1rem;">
+            <a href="#" data-action="toggle-register" style="color: var(--color-primary); font-size: 0.875rem;">Crear cuenta nueva</a>
+          </div>
           <div class="demo-credentials">
             <strong>Usuarios de demostración</strong>
             <small>admin / admin123 · bodega / bodega123 · operario / operario123</small>
+          </div>
+        </div>
+      </div>`;
+  }
+
+  function registerView() {
+    app.innerHTML = `
+      <div class="login-shell">
+        <div class="login-card">
+          <img src="assets/logo.svg?v=3" alt="CarpinStock" class="login-logo">
+          <span class="eyebrow">NUEVO USUARIO</span>
+          <h1>Registro en el sistema</h1>
+          <p>Crea tu cuenta para acceder al sistema de inventario.</p>
+          <form id="register-form">
+            <label>Nombre completo
+              <input name="name" required placeholder="Ej. Juan Pérez">
+            </label>
+            <label>Nombre de usuario
+              <input name="username" autocomplete="username" required placeholder="Ej. jperez">
+            </label>
+            <label>Rol
+              <select name="role" required>
+                <option value="Operario">Operario (Consulta básica y mermas)</option>
+                <option value="Supervisor">Supervisor (Control de entradas/salidas)</option>
+                <option value="Administrador">Administrador (Control total)</option>
+              </select>
+            </label>
+            <label>Contraseña
+              <input name="password" type="password" autocomplete="new-password" required placeholder="••••••••">
+            </label>
+            <button class="btn btn-primary btn-block" type="submit">Registrar usuario</button>
+          </form>
+          <div style="text-align: center; margin-top: 1rem;">
+            <a href="#" data-action="toggle-login" style="color: var(--color-text-mut); font-size: 0.875rem;">Volver al inicio de sesión</a>
           </div>
         </div>
       </div>`;
@@ -384,6 +421,16 @@
       return;
     }
 
+    if (action === 'toggle-register') {
+      registerView();
+      return;
+    }
+
+    if (action === 'toggle-login') {
+      loginView();
+      return;
+    }
+
     if (action === 'help') {
       openModal('help');
       return;
@@ -555,6 +602,30 @@
       currentRoute = 'dashboard';
       render();
       toast(`Bienvenido, ${user.name}.`);
+      return;
+    }
+
+    if (form.id === 'register-form') {
+      const fd = new FormData(form);
+      const payload = {
+        name: fd.get('name'),
+        username: fd.get('username'),
+        role: fd.get('role'),
+        password: fd.get('password')
+      };
+      
+      try {
+        const newUser = CarpiAuth.register(payload, state.users);
+        CarpiStorage.save(state);
+        
+        // Auto-login after registration
+        state.session = { id: newUser.id, name: newUser.name, role: newUser.role };
+        currentRoute = 'dashboard';
+        render();
+        toast(`Cuenta creada exitosamente. Bienvenido, ${newUser.name}.`);
+      } catch (err) {
+        toast(err.message, 'error');
+      }
       return;
     }
 
