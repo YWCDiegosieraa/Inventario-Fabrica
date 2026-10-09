@@ -1,0 +1,29 @@
+{
+  "name": "inventario-fabrica",
+  "version": "1.0.0",
+  "description": "Sistema web de inventario para una fábrica de carpintería, preparado para Visual Studio Code.",
+  "main": "sw.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YWCDiegosieraa/Inventario-Fabrica.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/YWCDiegosieraa/Inventario-Fabrica/issues"
+  },
+  "homepage": "https://github.com/YWCDiegosieraa/Inventario-Fabrica#readme",
+  "devDependencies": {
+    "vite": "^8.3.4"
+  }
+}

@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="CarpinStock Pro">
-  <rect width="64" height="64" rx="12" fill="#1e293b"/>
-  <path d="M32 12 48 21v22l-16 9-16-9V21z" fill="#d97706"/>
-  <path d="m32 20 9 5v12l-9 5-9-5V25z" fill="#fff7ed" opacity=".95"/>
-  <path d="M32 24v14M25 28l7-4 7 4" stroke="#1e293b" stroke-width="2.5" fill="none"/>
-</svg>

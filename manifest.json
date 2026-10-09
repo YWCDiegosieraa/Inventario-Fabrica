@@ -1,9 +1,0 @@
-{
-  "name": "CarpinStock Pro",
-  "short_name": "CarpinStock",
-  "start_url": ".",
-  "display": "standalone",
-  "background_color": "#f8fafc",
-  "theme_color": "#1e293b",
-  "icons": [{"src":"assets/logo.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
-}
